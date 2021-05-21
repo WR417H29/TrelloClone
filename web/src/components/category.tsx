@@ -11,24 +11,7 @@ export const Category = (props: Props) => {
             test
             <div className={"cardScrollBox"}>
                 <div className={"cardContainer"}>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
-                    <Card/>
+                    <Card innerText="Test Card" />
                 </div>
             </div>
         </div>
