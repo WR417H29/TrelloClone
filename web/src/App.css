@@ -36,3 +36,42 @@
     transform: rotate(360deg);
   }
 }
+
+.category{
+  background-color: lightgrey;
+  border-radius: 5px;
+
+  max-height: 80vh;
+  max-width: 30vw;
+  padding: 10px;
+  overflow: hidden;
+
+  padding: 10px;
+}
+
+.cardScrollBox{
+  overflow: scroll;
+  overflow-x: hidden;
+
+  max-height: 80%;
+
+
+  scrollbar-width: 0px;
+  -ms-overflow-style: none;
+}
+
+.cardScrollBox::-webkit-scrollbar {
+  /*display: none;*/
+}
+
+.cardContainer{
+  max-height: 100%;
+  display: hidden;  
+}
+
+.card{
+  background-color:white; /*temporary*/
+  border-radius: 5px;
+  margin: 5px;
+  padding: 5px;
+}

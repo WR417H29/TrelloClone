@@ -4,12 +4,26 @@ interface cardState {
     containedText: string;
 }
 
-class Card extends React.Component<{}, cardState>
-{
-    constructor(props)
-    {
-        
-    }
+interface cardProps {
+
 }
 
-export default Category;
+class Card extends React.Component<cardProps, cardState>
+{
+    constructor(props: any)
+    {
+        super(props)
+    }
+
+    public render(){
+        return(
+            <div className = {"card"}>
+                test Card
+            </div>
+        );
+    }
+
+    
+}
+
+export default Card;
