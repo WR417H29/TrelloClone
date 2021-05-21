@@ -9,10 +9,10 @@
 
 ## Examples
 ```
--   ExampleClass
--   exampleVariable
--   exampleFile
--   exampleFunction{
+ExampleClass
+exampleVariable
+exampleFile
+exampleFunction{
     like so
-    }
+}
 ```
