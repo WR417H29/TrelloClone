@@ -8,10 +8,11 @@
 -   Braces open on end of line
 
 ## Examples
-
+```
 -   ExampleClass
 -   exampleVariable
 -   exampleFile
 -   exampleFunction{
     like so
     }
+```
