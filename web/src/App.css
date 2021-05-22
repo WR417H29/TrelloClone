@@ -42,35 +42,46 @@
     border-radius: 5px;
 
     max-height: 80vh;
-    max-width: 30vw;
+    width: 25vw;
     padding: 10px;
     overflow: hidden;
 
-    padding: 10px;
+    margin: 10px;
 }
 
 .cardScrollBox {
     overflow: scroll;
     overflow-x: hidden;
 
-    max-height: 80%;
+    height: 70vh;
 
-    scrollbar-width: 0px;
-    -ms-overflow-style: none;
+    -ms-overflow-style: none;  /* hide scroll bar in IE and Edge */
+    scrollbar-width: none;  /* hide scroll bar in Firefox */
 }
 
-.cardScrollBox::-webkit-scrollbar {
-    display: none;
-}
-
-.cardContainer {
-    max-height: 100%;
-    display: hidden;
-}
 
 .card {
     background-color: white; /*temporary*/
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
+
 }
+
+button.card, button.category{ /* all buttons with class card, this should clear out the buttons preset css and let them just look like other cards*/
+    border: none;
+    
+}
+
+button.category:hover, button.card:hover{
+    background-color: grey;
+}
+
+.categoryContainer{
+    display:flex;
+    overflow-x: scroll;
+
+    -ms-overflow-style: none;  /* hide scroll bar in IE and Edge */
+    scrollbar-width: none;  /* hide scroll bar in Firefox */
+}
+

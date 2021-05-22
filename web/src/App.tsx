@@ -6,7 +6,11 @@ import Category from "./components/category";
 function App() {
     return (
         <div className="home-page">
-            <Category name="test" />
+            <div className="categoryContainer">
+                <Category name="test" />
+                
+                <button className = "category">+</button>
+            </div>
         </div>
     );
 }
