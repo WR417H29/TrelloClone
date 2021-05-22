@@ -9,6 +9,7 @@ function App() {
     return (
         <div className="home-page">
             <Board name="test" />
+            <Board name="test2" />
         </div>
     );
 }

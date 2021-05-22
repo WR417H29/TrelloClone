@@ -18,12 +18,22 @@ class Board extends React.Component<boardProps, boardState> {
         };
     }
 
+    getCategories() {
+        // fetch("/home", {
+        //     method: "GET",
+        // })
+        //     .then((res) => res.json())
+        //     .then((data) => console.log(data));
+
+        return [<Category name="Category 1" />, <Category name="Category 2" />];
+    }
+
     // need to create a function to interact with python api to
     // get a list of all categories
     // and find the boards etc
 
     render() {
-        const categories: string[] = ["hi"];
+        const categories = this.getCategories();
 
         return <div className="board">Board: {categories}</div>;
     }

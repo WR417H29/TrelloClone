@@ -18,7 +18,7 @@ class Category extends React.Component<categoryProps, categoryState> {
         };
     }
 
-    getCards(): Array<React.ReactElement> {
+    getCards() {
         return [<Card text="Test Card 1" />, <Card text="Test Card 2" />];
     }
 
