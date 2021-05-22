@@ -1,12 +1,12 @@
 import React from "react";
 import "./App.css";
 
-import Category from "./components/category";
+import Board from "./components/board";
 
 function App() {
     return (
         <div className="home-page">
-            <Category name="test" />
+            <Board name="test" />
         </div>
     );
 }

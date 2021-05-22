@@ -1,22 +1,23 @@
 import React from "react";
 
-interface cardState {}
-
 interface cardProps {
-    innerText?: string;
+    text: string;
+}
+
+interface cardState {
+    text: string;
 }
 
 class Card extends React.Component<cardProps, cardState> {
-    innerText?: string;
-
     constructor(props: cardProps) {
         super(props);
-        this.innerText = props.innerText ? props.innerText : "Test";
-        this.state = {};
+        this.state = {
+            text: this.props.text,
+        };
     }
 
     render() {
-        return <div className={"card"}>{this.innerText}</div>;
+        return <div className={"card"}>{this.state.text}</div>;
     }
 }
 
