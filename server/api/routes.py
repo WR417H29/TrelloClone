@@ -4,6 +4,7 @@ from api import app, db
 from api.models import Board, Category, Card
 
 
+# new route, /boards, if user requests, all boards are returned
 @app.route('/boards', methods=['GET', 'POST'])
 def boards():
     if request.method == 'GET':
@@ -19,6 +20,7 @@ def boards():
         return jsonify(boards), 200
 
 
+# request a specific boards categories
 @app.route('/categories/<int:boardID>', methods=['GET', 'POST'])
 def categories(boardID):
     if request.method == 'GET':
@@ -35,6 +37,7 @@ def categories(boardID):
         return jsonify(categories), 200
 
 
+# request a categories cards.
 @app.route('/cards/<int:categoryID>', methods=['GET', 'POST'])
 def cards(categoryID):
     if request.method == 'GET':

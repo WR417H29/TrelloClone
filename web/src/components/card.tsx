@@ -4,12 +4,12 @@ interface cardProps {
     text: string;
     name: string;
     id: number;
-}
+} // declaring the required props
 
 interface cardState {
     text: string;
     name: string;
-}
+} // declaring the required state
 
 class Card extends React.Component<cardProps, cardState> {
     id: number;
@@ -19,16 +19,16 @@ class Card extends React.Component<cardProps, cardState> {
         this.state = {
             text: this.props.text,
             name: this.props.name,
-        };
+        }; // setting up props and state
     }
 
     render() {
         return (
             <div className={"card"}>
                 {this.state.name}: {this.state.text}
-            </div>
+            </div> // creating a component to place on screen
         );
     }
 }
 
-export default Card;
+export default Card; // exporting the Card class.

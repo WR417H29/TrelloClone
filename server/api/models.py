@@ -1,17 +1,19 @@
 from api import db
 
 
-class Board(db.Model):
-    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
-    name = db.Column(db.String(40), unique=True, nullable=False)
+class Board(db.Model):  # creating a Board table
+    id = db.Column(db.Integer, primary_key=True,
+                   autoincrement=True)  # id field
+    name = db.Column(db.String(40), unique=True, nullable=False)  # name field
 
+    # declares that there is a relationship between categories and boards
     categories = db.relationship('Category', backref='board', lazy=True)
 
     def __repr__(self):
-        return '<Board %s>' % self.name
+        return '<Board %s>' % self.name  # if user prints board returns <Board name>
 
 
-class Category(db.Model):
+class Category(db.Model):  # same as above
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(40), nullable=False)
 
