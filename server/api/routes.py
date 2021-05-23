@@ -19,34 +19,34 @@ def boards():
         return jsonify(boards), 200
 
 
-@app.route('/categories', methods=['GET', 'POST'])
-def categories():
+@app.route('/categories/<int:boardID>', methods=['GET', 'POST'])
+def categories(boardID):
     if request.method == 'GET':
         print('GET Categories')
 
         categories = []
-        for x in Category.query.all():
+        for x in Category.query.filter_by(boardID=boardID).all():
             categories.append({
                 'id': x.id,
                 'name': x.name,
-                'boardID': x.board_id
+                'boardID': x.boardID
             })
 
         return jsonify(categories), 200
 
 
-@app.route('/cards', methods=['GET', 'POST'])
-def cards():
+@app.route('/cards/<int:categoryID>', methods=['GET', 'POST'])
+def cards(categoryID):
     if request.method == 'GET':
         print('GET Cards')
 
         cards = []
-        for x in Card.query.all():
+        for x in Card.query.filter_by(categoryID=categoryID).all():
             cards.append({
                 'id': x.id,
                 'name': x.name,
                 'body': x.body,
-                'categoryID': x.category_id
+                'categoryID': x.categoryID
             })
 
         return jsonify(cards), 200

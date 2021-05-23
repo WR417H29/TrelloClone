@@ -2,25 +2,32 @@ import React from "react";
 
 interface cardProps {
     text: string;
-    key: number;
+    name: string;
+    id: number;
 }
 
 interface cardState {
     text: string;
+    name: string;
 }
 
 class Card extends React.Component<cardProps, cardState> {
-    key: number;
+    id: number;
     constructor(props: cardProps) {
         super(props);
-        this.key = props.key;
+        this.id = props.id;
         this.state = {
             text: this.props.text,
+            name: this.props.name,
         };
     }
 
     render() {
-        return <div className={"card"}>{this.state.text}</div>;
+        return (
+            <div className={"card"}>
+                {this.state.name}: {this.state.text}
+            </div>
+        );
     }
 }
 

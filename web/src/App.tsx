@@ -2,11 +2,7 @@ import React from "react";
 import "./App.css";
 
 import Board from "./components/board";
-
-type BoardType = {
-    id: number;
-    name: string;
-};
+import { BoardType } from "./components/types";
 
 interface appProps {}
 
@@ -37,16 +33,14 @@ class App extends React.Component<appProps, appState> {
     render() {
         let disp: any = [];
         this.state.boards.forEach((board: BoardType) => {
+            console.log("Board: " + board.id);
             disp.push(
                 <div className="board">
-                    <p>Board: </p>
-                    <Board name={board.name} key={board.id} />
+                    <p>{board.name}: </p>
+                    <Board name={board.name} id={board.id} key={board.id} />
                 </div>
             );
         });
-
-        console.log("Disp: ");
-        console.log(disp);
 
         return <div className="home-page">{disp}</div>;
     }

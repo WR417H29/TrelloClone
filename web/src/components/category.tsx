@@ -1,17 +1,11 @@
 import React from "react";
 
 import Card from "./card";
-
-type CardType = {
-    id: number;
-    name: string;
-    body: string;
-    categoryID: number;
-};
+import { CardType } from "./types";
 
 interface categoryProps {
     name: string;
-    key: number;
+    id: number;
 }
 
 interface categoryState {
@@ -20,11 +14,11 @@ interface categoryState {
 }
 
 class Category extends React.Component<categoryProps, categoryState> {
-    key: number;
+    id: number;
 
     constructor(props: categoryProps) {
         super(props);
-        this.key = props.key;
+        this.id = props.id;
         this.state = {
             name: this.props.name,
             cards: [],
@@ -32,7 +26,7 @@ class Category extends React.Component<categoryProps, categoryState> {
     }
 
     componentDidMount() {
-        fetch("/cards", {
+        fetch(`/cards/${this.id}`, {
             method: "GET",
         })
             .then((res) => res.json())
@@ -44,8 +38,14 @@ class Category extends React.Component<categoryProps, categoryState> {
     render() {
         let disp: any = [];
         this.state.cards.forEach((card: CardType) => {
-            console.log(card);
-            disp.push(<Card text={card.body} key={card.id} />);
+            disp.push(
+                <Card
+                    name={card.name}
+                    text={card.body}
+                    id={card.id}
+                    key={card.id}
+                />
+            );
         });
 
         return (

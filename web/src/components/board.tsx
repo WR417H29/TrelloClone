@@ -1,16 +1,11 @@
 import React from "react";
 
 import Category from "./category";
-
-type CategoryType = {
-    id: number;
-    name: string;
-    boardID: number;
-};
+import { CategoryType } from "./types";
 
 interface boardProps {
     name: string;
-    key: number;
+    id: number;
 }
 
 interface boardState {
@@ -19,11 +14,12 @@ interface boardState {
 }
 
 class Board extends React.Component<boardProps, boardState> {
-    key: number;
+    id: number;
 
     constructor(props: boardProps) {
         super(props);
-        this.key = props.key;
+
+        this.id = props.id;
         this.state = {
             name: this.props.name,
             categories: [],
@@ -31,7 +27,7 @@ class Board extends React.Component<boardProps, boardState> {
     }
 
     componentDidMount() {
-        fetch("/categories", {
+        fetch(`/categories/${this.id}`, {
             method: "GET",
         })
             .then((res) => res.json())
@@ -40,14 +36,16 @@ class Board extends React.Component<boardProps, boardState> {
             });
     }
 
-    // need to create a function to interact with python api to
-    // get a list of all categories
-    // and find the boards etc
-
     render() {
         let disp: any = [];
         this.state.categories.forEach((category: CategoryType) => {
-            disp.push(<Category name={category.name} key={category.id} />);
+            disp.push(
+                <Category
+                    name={category.name}
+                    id={category.id}
+                    key={category.id}
+                />
+            );
         });
 
         return <div className="board">{disp}</div>;
