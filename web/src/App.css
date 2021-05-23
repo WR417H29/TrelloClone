@@ -55,6 +55,8 @@
 
     height: 70vh;
 
+    border-radius: 5px;
+
     -ms-overflow-style: none; /* hide scroll bar in IE and Edge */
     scrollbar-width: none; /* hide scroll bar in Firefox */
 }

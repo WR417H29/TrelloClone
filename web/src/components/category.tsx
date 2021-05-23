@@ -52,7 +52,10 @@ class Category extends React.Component<categoryProps, categoryState> {
 
         return (
             <div className={"category"}>
-                {this.state.name} {disp}
+                {this.state.name}
+                <div className = {"cardScrollBox"}>
+                    {disp}
+                </div>
             </div> // return cards to be placed on screen.
         );
     }
