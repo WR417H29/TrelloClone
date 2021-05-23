@@ -1,7 +1,12 @@
 import React from "react";
 import "./App.css";
 
-// import Board from "./components/board";
+import Board from "./components/board";
+
+type BoardType = {
+    id: number;
+    name: string;
+};
 
 interface appProps {}
 
@@ -19,28 +24,31 @@ class App extends React.Component<appProps, appState> {
         };
     }
 
-    getBoards() {
+    componentDidMount() {
         fetch("/boards", {
             method: "GET",
         })
             .then((res) => res.json())
             .then((data) => {
-                //     this.setState({
-                //         boards: data,
-                //     });
+                this.setState({ boards: data });
             });
     }
 
-    componentDidMount() {
-        // this.getBoards();
-    }
-
     render() {
-        this.getBoards();
-        console.log("Data: ");
-        console.log(this.boards);
+        let disp: any = [];
+        this.state.boards.forEach((board: BoardType) => {
+            disp.push(
+                <div className="board">
+                    <p>Board: </p>
+                    <Board name={board.name} key={board.id} />
+                </div>
+            );
+        });
 
-        return <div className="home-page"></div>;
+        console.log("Disp: ");
+        console.log(disp);
+
+        return <div className="home-page">{disp}</div>;
     }
 }
 
