@@ -19,11 +19,11 @@ class Board extends React.Component<boardProps, boardState> {
     }
 
     getCategories() {
-        // fetch("/home", {
-        //     method: "GET",
-        // })
-        //     .then((res) => res.json())
-        //     .then((data) => console.log(data));
+        fetch("/boards", {
+            method: "GET",
+        })
+            .then((res) => res.json())
+            .then((data) => console.log(data));
 
         return [<Category name="Category 1" />, <Category name="Category 2" />];
     }
