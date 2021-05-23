@@ -15,7 +15,7 @@ class Category(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     name = db.Column(db.String(40), nullable=False)
 
-    board_id = db.Column(db.Integer, db.ForeignKey('board.id'), nullable=False)
+    boardID = db.Column(db.Integer, db.ForeignKey('board.id'), nullable=False)
 
     cards = db.relationship('Card', backref='category', lazy=True)
 
@@ -28,7 +28,7 @@ class Card(db.Model):
     name = db.Column(db.String(40), nullable=False)
     body = db.Column(db.String(150), nullable=False)
 
-    category_id = db.Column(db.Integer, db.ForeignKey(
+    categoryID = db.Column(db.Integer, db.ForeignKey(
         'category.id'), nullable=False)
 
     def __repr__(self):
