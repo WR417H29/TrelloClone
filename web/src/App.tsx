@@ -33,7 +33,6 @@ class App extends React.Component<appProps, appState> {
     render() {
         let disp: any = [];
         this.state.boards.forEach((board: BoardType) => {
-            console.log("Board: " + board.id);
             disp.push(
                 <div className="board">
                     <p>{board.name}: </p>

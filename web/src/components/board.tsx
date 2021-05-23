@@ -48,7 +48,7 @@ class Board extends React.Component<boardProps, boardState> {
             );
         });
 
-        return <div className="board">{disp}</div>;
+        return <div className="categories">{disp}</div>;
     }
 }
 

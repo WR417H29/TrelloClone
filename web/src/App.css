@@ -84,3 +84,7 @@ button.card:hover {
     -ms-overflow-style: none; /* hide scroll bar in IE and Edge */
     scrollbar-width: none; /* hide scroll bar in Firefox */
 }
+
+.categories {
+    display: flex;
+}
