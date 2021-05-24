@@ -29,10 +29,35 @@ def boards():
         db.session.add(board)
         db.session.commit()
 
-        return redirect("localhost:3000")
-
+        return redirect('http://localhost:3000')
 
 # request a specific boards categories
+
+
+@app.route('/board/delete/<int:boardID>')  # route
+def deleteBoard(boardID):
+    exists = Board.query.filter_by(id=boardID).first()
+    if not exists:
+        return redirect('http://localhost:3000')
+
+    categories = Category.query.filter_by(boardID=boardID).all()
+
+    for cat in categories:
+        cards = Card.query.filter_by(categoryID=cat.id).all()
+        for card in cards:
+            db.session.delete(card)  # delete all cards on the page
+
+        db.session.delete(cat)  # delete all categories on the page
+
+    db.session.delete(exists)  # delete the board
+    db.session.commit()  # commit to the session
+
+    # the reason cards and categories are deleted is for referential integrity
+
+    # sending user back to home screen
+    return redirect('http://localhost:3000')
+
+
 @app.route('/categories/<int:boardID>', methods=['GET', 'POST'])
 def categories(boardID):
     if request.method == 'GET':
@@ -50,7 +75,7 @@ def categories(boardID):
 
 
 # request a categories cards.
-@app.route('/cards/<int:categoryID>', methods=['GET', 'POST'])
+@ app.route('/cards/<int:categoryID>', methods=['GET', 'POST'])
 def cards(categoryID):
     if request.method == 'GET':
         print('GET Cards')
