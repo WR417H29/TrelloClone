@@ -90,3 +90,26 @@ button.card:hover {
 .categories {
     display: flex;
 }
+
+.toolbar{
+    background-color: grey;
+    border-bottom-right-radius: 5px;
+    display: flex;
+    padding: 7px;
+    padding-top: 0px;
+    margin-right: 5px;
+}
+
+.toolbar button{
+    border: none;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    background-color: lightgrey;
+    min-height: 4vh;
+    font-size: 0.8rem;
+}
+
+.board{
+    margin-left: 10px;
+    margin-top: 10px;
+}

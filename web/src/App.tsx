@@ -59,9 +59,7 @@ class App extends React.Component<appProps, appState> {
             this.state.boards.forEach((board: BoardType) => { // this is awful I'm so sorry
                 if (board.id == this.state.currentBoardID){
                     disp.push(
-                        <div className="board">
                             <Board name={board.name} id={board.id} key={board.id} menuFunction = {() => this.resetBoard()} />
-                        </div>
                     ); // creating Board components
                 }
             }

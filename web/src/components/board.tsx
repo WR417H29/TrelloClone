@@ -66,8 +66,10 @@ class Board extends React.Component<boardProps, boardState> {
                         back
                     </button>
                 </div>
-                {this.props.name}
-                <div className="categories">{disp}</div>
+                <div className = {"board"}>
+                    {this.props.name}
+                    <div className="categories">{disp}</div>
+                </div>
             </>
         ); // Returning a styled DIV with the categories in the middle.
     }
