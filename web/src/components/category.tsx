@@ -1,3 +1,4 @@
+import { createReadStream } from "fs";
 import React from "react";
 
 import Card from "./card";
@@ -10,7 +11,7 @@ interface categoryProps {
 
 interface categoryState {
     name: string;
-    cards: [];
+    cards:any[];
 } // declaring the state for the category.
 
 class Category extends React.Component<categoryProps, categoryState> {
@@ -46,6 +47,11 @@ class Category extends React.Component<categoryProps, categoryState> {
                     text={card.body}
                     id={card.id}
                     key={card.id}
+                    categoryID={card.categoryID}
+                    deleteFunction={(toRemove:CardType) => {
+                        this.state.cards.splice(this.state.cards.indexOf(toRemove), 1); // this function is passed to the card and when the card needs to delete itself it passes a CardType object to this which is removed from the list
+                        this.forceUpdate();
+                    }}
                 /> // creating card components from state
             );
         });

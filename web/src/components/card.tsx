@@ -1,9 +1,12 @@
 import React from "react";
+import { CardType } from "./types";
 
 interface cardProps {
     text: string;
     name: string;
     id: number;
+    categoryID: number;
+    deleteFunction: Function;
 } // declaring the required props
 
 interface cardState {
@@ -28,7 +31,15 @@ class Card extends React.Component<cardProps, cardState> {
                 <div className = {"cardInternals"}>
                     <>{this.state.name}: {this.state.text}</> {/* the <> have to be there otherwise it thinks theres nothing inside the div and react ignores it*/}
                 </div>
-                <button onClick = {() => (console.log("delete this card"))} className = {"cardDeleteButton"}>x</button>
+                <button 
+                    onClick = {() => {
+                        fetch(`/card/delete/${this.id}`)
+                        this.props.deleteFunction({id: this.props.id, name: this.props.name, body: this.props.text, categoryID: this.props.categoryID}) // create a card type object representing ourselves, then pass that to the category which will find something identical to it in its card list and delete it
+                    }} 
+                    className = {"cardDeleteButton"}
+                >
+                    x
+                </button>
             </div> // creating a component to place on screen
         );
     }

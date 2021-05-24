@@ -57,6 +57,21 @@ def deleteBoard(boardID):
     # sending user back to home screen
     return redirect('http://localhost:3000')
 
+@app.route('/card/delete/<int:cardID>')  # route
+def deleteCard(cardID):
+    print("deleting card?")
+    exists = Card.query.filter_by(id=cardID).first() # does card exist?
+    if not exists:
+        return redirect('http://localhost:3000')
+
+
+    db.session.delete(exists)  # delete the card
+    db.session.commit()  # commit to the session
+
+
+    # sending user back to home screen
+    return redirect('http://localhost:3000')
+
 
 @app.route('/categories/<int:boardID>', methods=['GET', 'POST'])
 def categories(boardID):
