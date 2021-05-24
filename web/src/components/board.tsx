@@ -66,13 +66,20 @@ class Board extends React.Component<boardProps, boardState> {
                         back
                     </button>
                     <button
-                        className="delete-button" // to make it look nice later
                         onClick={() => {
                             fetch(`/board/delete/${this.id}`); // fetch request to api to delete the psot
                             window.setTimeout(() => (document.location.reload()), 500); // reload the page after a 500ms wait
                         }}
                     >
                     Delete Board
+                    </button>
+                    <button
+                        onClick={() => {
+                            fetch(`/board/delete/${this.id}`); // fetch request to api to delete the psot
+                            window.setTimeout(() => (document.location.reload()), 500); // reload the page after a 500ms wait
+                        }}
+                    >
+                    Add new category
                     </button>
                 </div>
                 <div className={"board"}>
