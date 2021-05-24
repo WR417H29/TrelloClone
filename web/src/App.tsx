@@ -35,10 +35,6 @@ class App extends React.Component<appProps, appState> {
         this.setState({ newBoard: true });
     }
 
-    handleSubmit(event: any) {
-        console.log(event);
-    }
-
     componentDidMount() {
         const url = "/boards"; // posting a get request to the python API
 
@@ -68,7 +64,6 @@ class App extends React.Component<appProps, appState> {
 
             return (
                 <>
-                    
                     <div className={"menuContainer"}>
                         <div className={"menuBody"}>
                             {disp}
@@ -84,28 +79,33 @@ class App extends React.Component<appProps, appState> {
                             board
                         </div>
                     </div>
-                    
-                    {this.state.newBoard &&
-                        <div className = {"popUp"}>
-                                <button onClick={() => this.setState({newBoard : false})}>
-                                    back
-                                </button>
-                                <form method="POST" action="/boards">
-                                    <label>
-                                        Board Name:
-                                        <input
-                                            type="text"
-                                            name="name"
-                                            autoComplete="false"
-                                        />
-                                    </label>
-                                    <input type="submit" value="Submit" />
-                                </form>
+
+                    {this.state.newBoard && (
+                        <div className={"popUp"}>
+                            <button
+                                onClick={() =>
+                                    this.setState({ newBoard: false })
+                                }
+                            >
+                                back
+                            </button>
+                            <form method="POST" action="/boards">
+                                <label>
+                                    Board Name:
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        autoComplete="false"
+                                    />
+                                </label>
+                                <input type="submit" value="Submit" />
+                            </form>
                         </div>
-                    }
+                    )}
                 </>
             );
-        } else { // if we do have a selected board then render it
+        } else {
+            // if we do have a selected board then render it
             let disp: any = [];
             this.state.boards.forEach((board: BoardType) => {
                 // this is awful I'm so sorry
