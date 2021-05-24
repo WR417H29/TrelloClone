@@ -123,7 +123,7 @@ button.card:hover {
     justify-content: left;
 
     flex-wrap: wrap;
-    align-content: stretch;
+    align-content: flex-start;
 
     margin: 10px;
 }
@@ -154,7 +154,16 @@ button.card:hover {
 }
 
 .board-select {
-    width: 7.5vw;
-    height: 7.5vh;
+    min-width: 7.5vw;
+    min-height: 7.5vh;
     font-size: 16px;
+}
+
+.popUp{
+    position: fixed;
+    bottom: 50%;
+    right: 50%;
+    background-color: grey;
+    padding: 10px;
+    border-radius: 10px;
 }
