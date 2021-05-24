@@ -3,9 +3,11 @@ import React from "react";
 import Category from "./category";
 import { CategoryType } from "./types";
 
+// board component, used to display boards
 interface boardProps {
     name: string;
     id: number;
+    menuFunction: Function;
 } // declaring the props that a board must have to be created
 
 interface boardState {
@@ -57,7 +59,16 @@ class Board extends React.Component<boardProps, boardState> {
             );
         });
 
-        return <div className="categories">{disp}</div>; // Returning a styled DIV with the categories in the middle.
+        return (
+            <>
+                <div className={"toolbar"}>
+                    <button onClick={() => this.props.menuFunction()}>
+                        back
+                    </button>
+                </div>
+                <div className="categories">{disp}</div>
+            </>
+        ); // Returning a styled DIV with the categories in the middle.
     }
 }
 
