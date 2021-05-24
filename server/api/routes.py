@@ -1,4 +1,4 @@
-from flask import request, jsonify
+from flask import request, jsonify, redirect
 
 from api import app, db
 from api.models import Board, Category, Card
@@ -18,6 +18,18 @@ def boards():
             })
 
         return jsonify(boards), 200
+
+    if request.method == 'POST':
+        print("POST Boards")
+
+        form = request.form
+
+        board = Board(name=form['name'])
+
+        db.session.add(board)
+        db.session.commit()
+
+        return redirect("localhost:3000")
 
 
 # request a specific boards categories
