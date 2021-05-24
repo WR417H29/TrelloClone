@@ -69,7 +69,7 @@ class Board extends React.Component<boardProps, boardState> {
                         className="delete-button" // to make it look nice later
                         onClick={() => {
                             fetch(`/board/delete/${this.id}`); // fetch request to api to delete the psot
-                            document.location.reload(); // attempting to update the page
+                            window.setTimeout(() => (document.location.reload()), 500); // reload the page after a 500ms wait
                         }}
                     >
                     Delete Board
