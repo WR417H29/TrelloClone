@@ -55,7 +55,11 @@ class Category extends React.Component<categoryProps, categoryState> {
                 {this.state.name}
                 <div className = {"cardScrollBox"}>
                     {disp}
-                    <button className = {"card"}>add new card</button>
+                    <button 
+                    className = {"card"}
+                    onClick = {() => (console.log("make a card"))}
+                    >
+                        add new card</button>
                 </div>
             </div> // return cards to be placed on screen.
         );

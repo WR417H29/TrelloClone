@@ -24,8 +24,11 @@ class Card extends React.Component<cardProps, cardState> {
 
     render() {
         return (
-            <div className={"card"}>
-                {this.state.name}: {this.state.text}
+            <div className = {"card"}>
+                <div className = {"cardInternals"}>
+                    <>{this.state.name}: {this.state.text}</> {/* the <> have to be there otherwise it thinks theres nothing inside the div and react ignores it*/}
+                </div>
+                <button onClick = {() => (console.log("delete this card"))} className = {"cardDeleteButton"}>x</button>
             </div> // creating a component to place on screen
         );
     }
