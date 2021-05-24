@@ -29,6 +29,8 @@ class App extends React.Component<appProps, appState> {
         this.setState({ currentBoardID: -1 });
     }
 
+    newBoard() {}
+
     componentDidMount() {
         const url = "/boards"; // posting a get request to the python API
 
@@ -47,14 +49,26 @@ class App extends React.Component<appProps, appState> {
             let disp: any = [];
             this.state.boards.forEach((board: BoardType) => {
                 disp.push(
-                    <button onClick={() => this.setBoard(board)}>
+                    <button
+                        className="board-select"
+                        onClick={() => this.setBoard(board)}
+                    >
                         {board.name}
                     </button>
                 );
             });
+
             return (
                 <div className={"menuContainer"}>
-                    <div className={"menuBody"}>{disp}</div>
+                    <div className={"menuBody"}>
+                        {disp}
+                        <button
+                            className="board-select"
+                            onClick={() => this.newBoard()}
+                        >
+                            New Board
+                        </button>
+                    </div>
                     <div className={"introBox"}>
                         hey welcome to our trello clone, to start, pick a board
                     </div>
