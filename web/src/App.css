@@ -68,14 +68,14 @@
     padding: 5px;
 }
 
-button.card,
-button.category {
+.card button,
+.category button{
     /* all buttons with class card, this should clear out the buttons preset css and let them just look like other cards*/
     border: none;
 }
 
-button.category:hover,
-button.card:hover {
+.category button:hover,
+.card button:hover {
     background-color: grey;
 }
 
@@ -107,6 +107,7 @@ button.card:hover {
     background-color: lightgrey;
     min-height: 4vh;
     font-size: 0.8rem;
+    margin-left: 5px;
 }
 
 .board {

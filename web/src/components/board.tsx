@@ -65,20 +65,20 @@ class Board extends React.Component<boardProps, boardState> {
                     <button onClick={() => this.props.menuFunction()}>
                         back
                     </button>
+                    <button
+                        className="delete-button" // to make it look nice later
+                        onClick={() => {
+                            fetch(`/board/delete/${this.id}`); // fetch request to api to delete the psot
+                            document.location.reload(); // attempting to update the page
+                        }}
+                    >
+                    Delete Board
+                    </button>
                 </div>
                 <div className={"board"}>
                     {this.props.name}
                     <div className="categories">{disp}</div>
                 </div>
-                <button
-                    className="delete-button" // to make it look nice later
-                    onClick={() => {
-                        fetch(`/board/delete/${this.id}`); // fetch request to api to delete the psot
-                        document.location.reload(); // attempting to update the page
-                    }}
-                >
-                    Delete Board
-                </button>
             </>
         ); // Returning a styled DIV with the categories in the middle.
     }
