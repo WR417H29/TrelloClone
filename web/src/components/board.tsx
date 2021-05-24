@@ -77,7 +77,7 @@ class Board extends React.Component<boardProps, boardState> {
                         this.forceUpdate(); // attempting to update the page
                     }}
                 >
-                    Delete Post
+                    Delete Board
                 </button>
             </>
         ); // Returning a styled DIV with the categories in the middle.
