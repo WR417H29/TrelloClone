@@ -14,7 +14,7 @@ def boards():
         for x in Board.query.all():
             boards.append({
                 'id': x.id,
-                'name': x.name
+                'name': x.name.capitalize()
             })
 
         return jsonify(boards), 200
@@ -30,7 +30,7 @@ def categories(boardID):
         for x in Category.query.filter_by(boardID=boardID).all():
             categories.append({
                 'id': x.id,
-                'name': x.name,
+                'name': x.name.capitalize(),
                 'boardID': x.boardID
             })
 
@@ -47,7 +47,7 @@ def cards(categoryID):
         for x in Card.query.filter_by(categoryID=categoryID).all():
             cards.append({
                 'id': x.id,
-                'name': x.name,
+                'name': x.name.capitalize(),
                 'body': x.body,
                 'categoryID': x.categoryID
             })
