@@ -53,7 +53,17 @@ class App extends React.Component<appProps, appState> {
                     </button>
                 );
             });
-            return <>{disp}</>;
+            return (
+                <div className = {"menuContainer"}>
+
+                    <div className = {"menuBody"}>
+                        {disp}
+                    </div>
+                    <div className = {"introBox"}>
+                        hey welcome to our trello clone, to start, pick a board 
+                    </div>
+                </div>
+            );
         } else {
             let disp: any = [];
             this.state.boards.forEach((board: BoardType) => { // this is awful I'm so sorry
