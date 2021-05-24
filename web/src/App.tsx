@@ -1,5 +1,4 @@
 import React from "react";
-import { textChangeRangeIsUnchanged } from "typescript";
 import "./App.css";
 
 import Board from "./components/board";
@@ -43,7 +42,7 @@ class App extends React.Component<appProps, appState> {
     }
 
     render() {
-        if (this.state.currentBoardID == -1) {
+        if (this.state.currentBoardID === -1) {
             // if no board is selected then give the user a menu
             let disp: any = [];
             this.state.boards.forEach((board: BoardType) => {
@@ -54,26 +53,28 @@ class App extends React.Component<appProps, appState> {
                 );
             });
             return (
-                <div className = {"menuContainer"}>
-
-                    <div className = {"menuBody"}>
-                        {disp}
-                    </div>
-                    <div className = {"introBox"}>
-                        hey welcome to our trello clone, to start, pick a board 
+                <div className={"menuContainer"}>
+                    <div className={"menuBody"}>{disp}</div>
+                    <div className={"introBox"}>
+                        hey welcome to our trello clone, to start, pick a board
                     </div>
                 </div>
             );
         } else {
             let disp: any = [];
-            this.state.boards.forEach((board: BoardType) => { // this is awful I'm so sorry
-                if (board.id == this.state.currentBoardID){
+            this.state.boards.forEach((board: BoardType) => {
+                // this is awful I'm so sorry
+                if (board.id === this.state.currentBoardID) {
                     disp.push(
-                            <Board name={board.name} id={board.id} key={board.id} menuFunction = {() => this.resetBoard()} />
+                        <Board
+                            name={board.name}
+                            id={board.id}
+                            key={board.id}
+                            menuFunction={() => this.resetBoard()}
+                        />
                     ); // creating Board components
                 }
-            }
-        );
+            });
 
             return <div className="home-page">{disp}</div>; // placing them on the screen
         }
