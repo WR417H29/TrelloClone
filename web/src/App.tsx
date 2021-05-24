@@ -37,6 +37,7 @@ class App extends React.Component<appProps, appState> {
                 <div className="board">
                     <p>{board.name}: </p>
                     <Board name={board.name} id={board.id} key={board.id} />
+                    <button className="new-category">New Category</button>
                 </div>
             ); // creating Board components
         });
