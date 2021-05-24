@@ -64,6 +64,7 @@ class Board extends React.Component<boardProps, boardState> {
                 <div className = {"toolbar"}>
                     <button onClick = {() => this.props.menuFunction()}>back</button>
                 </div>
+                {this.props.name}
                 <div className="categories">{disp}</div>
             </>
         ); // Returning a styled DIV with the categories in the middle.
