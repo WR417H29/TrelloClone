@@ -21,12 +21,13 @@ class App extends React.Component<appProps, appState> {
         }; // creating an empty list
     }
 
-    setBoard(toSet:BoardType){ // used to set the current board being viewed
-        this.setState({currentBoardID: toSet.id});
+    setBoard(toSet: BoardType) {
+        // used to set the current board being viewed
+        this.setState({ currentBoardID: toSet.id });
     }
 
-    resetBoard(){
-        this.setState({currentBoardID: -1})
+    resetBoard() {
+        this.setState({ currentBoardID: -1 });
     }
 
     componentDidMount() {
@@ -42,21 +43,18 @@ class App extends React.Component<appProps, appState> {
     }
 
     render() {
-
-        if (this.state.currentBoardID == -1){ // if no board is selected then give the user a menu
-            let disp:any = [];
+        if (this.state.currentBoardID == -1) {
+            // if no board is selected then give the user a menu
+            let disp: any = [];
             this.state.boards.forEach((board: BoardType) => {
                 disp.push(
-                    <button onClick = {() => this.setBoard(board)}>{board.name}</button>
-                )
+                    <button onClick={() => this.setBoard(board)}>
+                        {board.name}
+                    </button>
+                );
             });
-            return(
-            <>
-                {disp}
-            </>
-            )
-        }
-        else{
+            return <>{disp}</>;
+        } else {
             let disp: any = [];
             this.state.boards.forEach((board: BoardType) => { // this is awful I'm so sorry
                 if (board.id == this.state.currentBoardID){
@@ -69,9 +67,8 @@ class App extends React.Component<appProps, appState> {
             }
         );
 
-        return <div className="home-page">{disp}</div>; // placing them on the screen
+            return <div className="home-page">{disp}</div>; // placing them on the screen
         }
-        
     }
 }
 

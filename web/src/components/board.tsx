@@ -61,8 +61,10 @@ class Board extends React.Component<boardProps, boardState> {
 
         return (
             <>
-                <div className = {"toolbar"}>
-                    <button onClick = {() => this.props.menuFunction()}>back</button>
+                <div className={"toolbar"}>
+                    <button onClick={() => this.props.menuFunction()}>
+                        back
+                    </button>
                 </div>
                 {this.props.name}
                 <div className="categories">{disp}</div>
@@ -70,6 +72,5 @@ class Board extends React.Component<boardProps, boardState> {
         ); // Returning a styled DIV with the categories in the middle.
     }
 }
-
 
 export default Board;
