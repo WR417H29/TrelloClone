@@ -11,6 +11,7 @@ interface categoryProps {
 interface categoryState {
     name: string;
     cards: any[];
+    newCard: boolean;
 } // declaring the state for the category.
 
 class Category extends React.Component<categoryProps, categoryState> {
@@ -22,7 +23,10 @@ class Category extends React.Component<categoryProps, categoryState> {
         this.state = {
             name: this.props.name,
             cards: [],
+            newCard: false,
         }; // declaring state and props
+
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -35,6 +39,24 @@ class Category extends React.Component<categoryProps, categoryState> {
             .then((data) => {
                 this.setState({ cards: data });
             }); // adding the cards to state
+    }
+
+    handleSubmit(event: any) {
+        event.preventDefault();
+
+        fetch(`/cards/${this.id}`, {
+            method: "POST",
+            body: JSON.stringify({
+                name: event.target.cardName.value,
+                body: event.target.cardBody.value,
+            }),
+            headers: {
+                "Content-type": "application/json",
+            },
+        });
+
+        window.setTimeout(() => this.componentDidMount(), 50);
+        window.setTimeout(() => this.setState({ newCard: false }), 50);
     }
 
     render() {
@@ -59,18 +81,41 @@ class Category extends React.Component<categoryProps, categoryState> {
         });
 
         return (
-            <div className={"category"}>
-                {this.state.name}
-                <div className={"cardScrollBox"}>
-                    {disp}
-                    <button
-                        className={"card"}
-                        onClick={() => console.log("make a card")}
-                    >
-                        add new card
-                    </button>
+            <>
+                <div className={"category"}>
+                    {this.state.name}
+                    <div className={"cardScrollBox"}>
+                        {disp}
+                        <button
+                            className={"card"}
+                            onClick={() => this.setState({ newCard: true })}
+                        >
+                            add new card
+                        </button>
+                    </div>
                 </div>
-            </div> // return cards to be placed on screen.
+                {/* return cards to be placed on screen. */}
+                {this.state.newCard && (
+                    <div className="popUp">
+                        <button
+                            onClick={() => this.setState({ newCard: false })}
+                        >
+                            Back
+                        </button>
+                        <form onSubmit={this.handleSubmit}>
+                            <label>
+                                Card Name:
+                                <input type="text" name="cardName" />
+                            </label>
+                            <label>
+                                Card Body:
+                                <input type="text" name="cardBody" />
+                            </label>
+                            <input type="submit" value="Submit" />
+                        </form>
+                    </div>
+                )}
+            </>
         );
     }
 }

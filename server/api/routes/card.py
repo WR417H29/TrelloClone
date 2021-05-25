@@ -21,6 +21,22 @@ def cards(categoryID):
 
         return jsonify(cards), 200
 
+    elif request.method == 'POST':
+        print('POST Cards')
+
+        data = request.get_json()
+
+        card = Card(
+            name=data['name'],
+            body=data['body'],
+            categoryID=categoryID
+        )
+
+        db.session.add(card)
+        db.session.commit()
+
+        return '', 204
+
 
 @app.route('/card/delete/<int:cardID>')  # deletes specified card
 def deleteCard(cardID):
