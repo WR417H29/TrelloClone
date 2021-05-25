@@ -76,7 +76,7 @@ class Category extends React.Component<categoryProps, categoryState> {
                             this.state.cards.indexOf(toRemove),
                             1
                         ); // this function is passed to the card and when the card needs to delete itself it passes a CardType object to this which is removed from the list
-                        this.forceUpdate();
+                        window.setTimeout(() => this.componentDidMount(), 50);
                     }}
                 /> // creating card components from state
             );
