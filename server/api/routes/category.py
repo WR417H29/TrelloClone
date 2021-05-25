@@ -23,15 +23,16 @@ def categories(boardID):
 
     elif request.method == 'POST':
         print('POST Categories')
-        # form = request.form
 
-        # category = Category(
-        #     name=form['name'],
-        #     boardID=boardID,
-        # )
+        data = request.get_json()
 
-        # db.session.add(category)
-        # db.session.commit()
+        category = Category(
+            name=data['name'],
+            boardID=boardID,
+        )
+
+        db.session.add(category)
+        db.session.commit()
 
         return '', 204
 

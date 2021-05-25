@@ -14,6 +14,7 @@ interface boardState {
     name: string;
     categories: [];
     newCategory: boolean;
+    categoryName: string;
 } // declaring what each board's state must contain
 
 class Board extends React.Component<boardProps, boardState> {
@@ -27,18 +28,10 @@ class Board extends React.Component<boardProps, boardState> {
             name: this.props.name, // declaring the initial name of the board
             categories: [], // declaring categories as an empty list
             newCategory: false,
+            categoryName: "",
         };
-    }
 
-    handleSubmit(event: any) {
-        event.preventDefault();
-
-        fetch(`/categories/${this.id}`, {
-            method: "POST",
-            body: JSON.stringify({
-                name: event.target.name.value,
-            }),
-        });
+        this.handleSubmit = this.handleSubmit.bind(this);
     }
 
     componentDidMount() {
@@ -58,6 +51,23 @@ class Board extends React.Component<boardProps, boardState> {
             .then((data) => {
                 this.setState({ categories: data });
             });
+    }
+
+    handleSubmit(event: any) {
+        event.preventDefault();
+
+        fetch(`/categories/${this.id}`, {
+            method: "POST",
+            body: JSON.stringify({
+                name: event.target.name.value,
+            }),
+            headers: {
+                "Content-type": "application/json",
+            },
+        });
+
+        window.setTimeout(() => this.componentDidMount(), 50);
+        window.setTimeout(() => this.setState({ newCategory: false }), 50);
     }
 
     render() {
