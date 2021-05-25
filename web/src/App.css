@@ -140,6 +140,10 @@
     max-height: 15vh;
 }
 
+.menuBody button:hover {
+    background-color: lightgray;
+}
+
 .introBox {
     flex-grow: 1;
 
@@ -156,7 +160,7 @@
     min-height: 100vh;
 }
 
-.board-select {
+.boardSelect {
     min-width: 7.5vw;
     min-height: 7.5vh;
     font-size: 16px;
@@ -186,4 +190,8 @@
 
 .cardInternals{
     flex-grow: 15;
+}
+
+.categoryDeleteButton{
+    border-radius: 5px;
 }

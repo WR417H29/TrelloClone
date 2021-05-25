@@ -54,7 +54,7 @@ class App extends React.Component<appProps, appState> {
             this.state.boards.forEach((board: BoardType) => {
                 disp.push(
                     <button
-                        className="board-select"
+                        className="boardSelect"
                         onClick={() => this.setBoard(board)}
                     >
                         {board.name}
