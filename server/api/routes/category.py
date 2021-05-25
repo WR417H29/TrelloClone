@@ -22,15 +22,16 @@ def categories(boardID):
         return jsonify(categories), 200
 
     elif request.method == 'POST':
-        form = request.form
+        print('POST Categories')
+        # form = request.form
 
-        category = Category(
-            name=form['name'],
-            boardID=boardID,
-        )
+        # category = Category(
+        #     name=form['name'],
+        #     boardID=boardID,
+        # )
 
-        db.session.add(category)
-        db.session.commit()
+        # db.session.add(category)
+        # db.session.commit()
 
         return '', 204
 

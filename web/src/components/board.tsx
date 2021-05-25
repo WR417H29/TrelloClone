@@ -13,6 +13,7 @@ interface boardProps {
 interface boardState {
     name: string;
     categories: [];
+    newCategory: boolean;
 } // declaring what each board's state must contain
 
 class Board extends React.Component<boardProps, boardState> {
@@ -25,7 +26,19 @@ class Board extends React.Component<boardProps, boardState> {
         this.state = {
             name: this.props.name, // declaring the initial name of the board
             categories: [], // declaring categories as an empty list
+            newCategory: false,
         };
+    }
+
+    handleSubmit(event: any) {
+        event.preventDefault();
+
+        fetch(`/categories/${this.id}`, {
+            method: "POST",
+            body: JSON.stringify({
+                name: event.target.name.value,
+            }),
+        });
     }
 
     componentDidMount() {
@@ -68,24 +81,43 @@ class Board extends React.Component<boardProps, boardState> {
                     <button
                         onClick={() => {
                             fetch(`/board/delete/${this.id}`); // fetch request to api to delete the psot
-                            window.setTimeout(() => (document.location.reload()), 500); // reload the page after a 500ms wait
+                            window.setTimeout(
+                                () => document.location.reload(),
+                                500
+                            ); // reload the page after a 500ms wait
                         }}
                     >
-                    Delete Board
+                        Delete Board
                     </button>
                     <button
-                        onClick={() => {
-                            fetch(`/board/delete/${this.id}`); // fetch request to api to delete the psot
-                            window.setTimeout(() => (document.location.reload()), 500); // reload the page after a 500ms wait
-                        }}
+                        onClick={() => this.setState({ newCategory: true })}
                     >
-                    Add new category
+                        Add new category
                     </button>
                 </div>
                 <div className={"board"}>
                     {this.props.name}
                     <div className="categories">{disp}</div>
                 </div>
+
+                {this.state.newCategory && (
+                    <div className={"popUp"}>
+                        <button
+                            onClick={() =>
+                                this.setState({ newCategory: false })
+                            }
+                        >
+                            Back
+                        </button>
+                        <form method="POST" onSubmit={this.handleSubmit}>
+                            <label>
+                                Category Name:
+                                <input type="text" name="name" />
+                            </label>
+                            <input type="submit" value="Submit" />
+                        </form>
+                    </div>
+                )}
             </>
         ); // Returning a styled DIV with the categories in the middle.
     }
