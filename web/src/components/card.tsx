@@ -1,5 +1,4 @@
 import React from "react";
-import { CardType } from "./types";
 
 interface cardProps {
     text: string;
@@ -27,16 +26,24 @@ class Card extends React.Component<cardProps, cardState> {
 
     render() {
         return (
-            <div className = {"card"}>
-                <div className = {"cardInternals"}>
-                    <>{this.state.name}: {this.state.text}</> {/* the <> have to be there otherwise it thinks theres nothing inside the div and react ignores it*/}
+            <div className={"card"}>
+                <div className={"cardInternals"}>
+                    <>
+                        {this.state.name}: {this.state.text}
+                    </>
+                    {/* the <> have to be there otherwise it thinks theres nothing inside the div and react ignores it*/}
                 </div>
-                <button 
-                    onClick = {() => {
-                        fetch(`/card/delete/${this.id}`)
-                        this.props.deleteFunction({id: this.props.id, name: this.props.name, body: this.props.text, categoryID: this.props.categoryID}) // create a card type object representing ourselves, then pass that to the category which will find something identical to it in its card list and delete it
-                    }} 
-                    className = {"cardDeleteButton"}
+                <button
+                    onClick={() => {
+                        fetch(`/card/delete/${this.id}`);
+                        this.props.deleteFunction({
+                            id: this.props.id,
+                            name: this.props.name,
+                            body: this.props.text,
+                            categoryID: this.props.categoryID,
+                        }); // create a card type object representing ourselves, then pass that to the category which will find something identical to it in its card list and delete it
+                    }}
+                    className={"cardDeleteButton"}
                 >
                     x
                 </button>
