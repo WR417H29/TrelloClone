@@ -12,7 +12,7 @@ interface boardProps {
 
 interface boardState {
     name: string;
-    categories: [];
+    categories: CategoryType[];
     newCategory: boolean;
     categoryName: string;
 } // declaring what each board's state must contain
@@ -78,6 +78,14 @@ class Board extends React.Component<boardProps, boardState> {
                     name={category.name}
                     id={category.id}
                     key={category.id}
+                    boardID={this.id}
+                    deleteFunction={(toRemove: CategoryType) => {
+                        this.state.categories.splice(
+                            this.state.categories.indexOf(toRemove),
+                            1
+                        ); // this function is passed to the card and when the card needs to delete itself it passes a CardType object to this which is removed from the list
+                        window.setTimeout(() => this.componentDidMount(), 50);
+                    }}
                 /> // creating a category component using the data from the API
             );
         });

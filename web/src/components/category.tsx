@@ -6,11 +6,13 @@ import { CardType } from "./types";
 interface categoryProps {
     name: string;
     id: number;
+    boardID: number;
+    deleteFunction: Function;
 } // declaring the props for the category.
 
 interface categoryState {
     name: string;
-    cards: any[];
+    cards: CardType[];
     newCard: boolean;
 } // declaring the state for the category.
 
@@ -84,6 +86,19 @@ class Category extends React.Component<categoryProps, categoryState> {
             <>
                 <div className={"category"}>
                     {this.state.name}
+                    <button
+                        onClick={() => {
+                            fetch(`/category/delete/${this.id}`);
+                            this.props.deleteFunction({
+                                id: this.props.id,
+                                name: this.props.name,
+                                boardID: this.props.boardID,
+                            }); // create a card type object representing ourselves, then pass that to the category which will find something identical to it in its card list and delete it
+                        }}
+                        // className={"cardDeleteButton"}
+                    >
+                        x
+                    </button>
                     <div className={"cardScrollBox"}>
                         {disp}
                         <button

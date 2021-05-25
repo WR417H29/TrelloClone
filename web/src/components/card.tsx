@@ -34,6 +34,7 @@ class Card extends React.Component<cardProps, cardState> {
                     {/* the <> have to be there otherwise it thinks theres nothing inside the div and react ignores it*/}
                 </div>
                 <button
+                    className={"cardDeleteButton"}
                     onClick={() => {
                         fetch(`/card/delete/${this.id}`);
                         this.props.deleteFunction({
@@ -43,7 +44,6 @@ class Card extends React.Component<cardProps, cardState> {
                             categoryID: this.props.categoryID,
                         }); // create a card type object representing ourselves, then pass that to the category which will find something identical to it in its card list and delete it
                     }}
-                    className={"cardDeleteButton"}
                 >
                     x
                 </button>
