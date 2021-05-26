@@ -11,9 +11,14 @@ def boards():
 
         boards = []
         for x in Board.query.all():
+            numCategories = 0
+            for cat in x.categories:
+                numCategories += 1
+
             boards.append({
                 'id': x.id,
-                'name': x.name.capitalize()
+                'name': x.name.capitalize(),
+                'numCategories': numCategories,
             })
 
         return jsonify(boards), 200

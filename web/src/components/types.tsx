@@ -8,6 +8,7 @@ export type CardType = {
 export type BoardType = {
     id: number;
     name: string;
+    numCategories: number;
 };
 
 export type CategoryType = {

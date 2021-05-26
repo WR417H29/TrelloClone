@@ -94,7 +94,7 @@ class Board extends React.Component<boardProps, boardState> {
             <>
                 <div className={"toolbar"}>
                     <button onClick={() => this.props.menuFunction()}>
-                        back
+                        Back
                     </button>
                     <button
                         onClick={() => {
@@ -120,6 +120,13 @@ class Board extends React.Component<boardProps, boardState> {
 
                 {this.state.newCategory && (
                     <div className={"popUp"}>
+                        <form method="POST" onSubmit={this.handleSubmit}>
+                            <label className="label">Category Name</label>
+                            <br />
+                            <input type="text" name="name" />
+                            <br />
+                            <input type="submit" value="Submit" />
+                        </form>
                         <button
                             onClick={() =>
                                 this.setState({ newCategory: false })
@@ -127,13 +134,6 @@ class Board extends React.Component<boardProps, boardState> {
                         >
                             Back
                         </button>
-                        <form method="POST" onSubmit={this.handleSubmit}>
-                            <label>
-                                Category Name:
-                                <input type="text" name="name" />
-                            </label>
-                            <input type="submit" value="Submit" />
-                        </form>
                     </div>
                 )}
             </>

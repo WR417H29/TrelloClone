@@ -92,7 +92,7 @@ class Category extends React.Component<categoryProps, categoryState> {
                             className={"card"}
                             onClick={() => this.setState({ newCard: true })}
                         >
-                            add new card
+                            Create Card
                         </button>
                     </div>
                     <button
@@ -106,28 +106,28 @@ class Category extends React.Component<categoryProps, categoryState> {
                         }}
                         className={"categoryDeleteButton"}
                     >
-                    x
+                        x
                     </button>
                 </div>
                 {/* return cards to be placed on screen. */}
                 {this.state.newCard && (
                     <div className="popUp">
+                        <form onSubmit={this.handleSubmit}>
+                            <label className="label">Card Name</label>
+                            <br />
+                            <input type="text" name="cardName" />
+                            <br />
+                            <label className="label">Card Body</label>
+                            <br />
+                            <input type="text" name="cardBody" />
+                            <br />
+                            <input type="submit" value="Submit" />
+                        </form>
                         <button
                             onClick={() => this.setState({ newCard: false })}
                         >
                             Back
                         </button>
-                        <form onSubmit={this.handleSubmit}>
-                            <label>
-                                Card Name:
-                                <input type="text" name="cardName" />
-                            </label>
-                            <label>
-                                Card Body:
-                                <input type="text" name="cardBody" />
-                            </label>
-                            <input type="submit" value="Submit" />
-                        </form>
                     </div>
                 )}
             </>

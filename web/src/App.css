@@ -66,12 +66,12 @@
     border-radius: 5px;
     margin: 5px;
     padding: 5px;
-    display:flex;
+    display: flex;
     justify-content: left;
     align-content: stretch;
 }
 .card button,
-.category button{
+.category button {
     /* all buttons with class card, this should clear out the buttons preset css and let them just look like other cards*/
     border: none;
 }
@@ -166,16 +166,17 @@
     font-size: 16px;
 }
 
-.popUp{
+.popUp {
     position: fixed; /*have it position relative to the screen rather than the webpage*/
     bottom: 50%; /*move it to the middle*/
-    right: 50%; 
+    right: 50%;
     background-color: grey;
     padding: 10px;
     border-radius: 10px;
+    text-align: center;
 }
 
-.cardDeleteButton{
+.cardDeleteButton {
     display: none;
     left: 1;
     bottom: 1;
@@ -184,14 +185,18 @@
     flex-grow: 1;
 }
 
-.card:hover .cardDeleteButton{
+.card:hover .cardDeleteButton {
     display: block;
 }
 
-.cardInternals{
+.cardInternals {
     flex-grow: 15;
 }
 
-.categoryDeleteButton{
+.categoryDeleteButton {
     border-radius: 5px;
+}
+
+.label {
+    text-decoration: underline;
 }

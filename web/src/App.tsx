@@ -58,6 +58,8 @@ class App extends React.Component<appProps, appState> {
                         onClick={() => this.setBoard(board)}
                     >
                         {board.name}
+                        <br />
+                        No. Categories: {board.numCategories}
                     </button>
                 );
             });
@@ -82,24 +84,24 @@ class App extends React.Component<appProps, appState> {
 
                     {this.state.newBoard && (
                         <div className={"popUp"}>
+                            <form method="POST" action="/boards">
+                                <label className="label">Board Name</label>
+                                <br />
+                                <input
+                                    type="text"
+                                    name="name"
+                                    autoComplete="false"
+                                />
+                                <br />
+                                <input type="submit" value="Submit" />
+                            </form>
                             <button
                                 onClick={() =>
                                     this.setState({ newBoard: false })
                                 }
                             >
-                                back
+                                Back
                             </button>
-                            <form method="POST" action="/boards">
-                                <label>
-                                    Board Name:
-                                    <input
-                                        type="text"
-                                        name="name"
-                                        autoComplete="false"
-                                    />
-                                </label>
-                                <input type="submit" value="Submit" />
-                            </form>
                         </div>
                     )}
                 </>
