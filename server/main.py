@@ -4,4 +4,4 @@ from api.routes import board, category, card
 # importing all from api
 
 if __name__ == "__main__":
-    app.run(port=5000)
+    app.run(port=5000)  # running the app

@@ -14,7 +14,6 @@ interface boardState {
     name: string;
     categories: CategoryType[];
     newCategory: boolean;
-    categoryName: string;
 } // declaring what each board's state must contain
 
 class Board extends React.Component<boardProps, boardState> {
@@ -27,8 +26,7 @@ class Board extends React.Component<boardProps, boardState> {
         this.state = {
             name: this.props.name, // declaring the initial name of the board
             categories: [], // declaring categories as an empty list
-            newCategory: false,
-            categoryName: "",
+            newCategory: false, // checking if a new Category is being made
         };
 
         this.handleSubmit = this.handleSubmit.bind(this);
